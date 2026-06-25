@@ -20,7 +20,7 @@
 | SDA | GPIO 27 | Transmisión de datos segundo bus I2C |
 | SCL | GPIO 16 | Sincronización del segundo bus I2C |
 
-> Ambos sensores tienen dirección I2C `0x53`. Se usan dos buses independientes para evitar colisiones en el bus.
+> Ambos sensores tienen dirección I2C `0x53`. Se usan dos buses independientes porque los sensores utilizados no podían ser conectados a uno mismo.
 
 ---
 
@@ -35,29 +35,21 @@
 
 ## Motores hápticos
 
-Cada motor se controla mediante un transistor NPN BC547. El pin de señal del ESP32 activa la base del transistor a través de una resistencia de 1 kΩ, permitiendo el paso de corriente al motor. Un diodo 1N4148 en paralelo con el motor protege el transistor de los picos de tensión inversa.
-
 ### Motor torácico
 
 | Conexión | Detalle |
 |---|---|
-| Pin positivo del motor | 5V |
-| Pin negativo del motor | Colector del BC547 |
-| Base del BC547 | GPIO 33 → resistencia 1 kΩ |
-| Emisor del BC547 | GND |
-| Diodo 1N4148 | En paralelo con el motor, cátodo hacia 5V |
+| Pin positivo del motor | GPIO 33 |
+| Pin negativo del motor | GND |
 
 ### Motor lumbar
 
 | Conexión | Detalle |
 |---|---|
-| Pin positivo del motor | 5V |
-| Pin negativo del motor | Colector del BC547 |
-| Base del BC547 | GPIO 26 → resistencia 1 kΩ |
-| Emisor del BC547 | GND |
-| Diodo 1N4148 | En paralelo con el motor, cátodo hacia 5V |
+| Pin positivo del motor | GPIO 26 |
+| Pin negativo del motor | GND |
 
-> El BC547 visto desde la cara plana tiene los pines en este orden de izquierda a derecha: **Colector — Base — Emisor**.
+> Se recomienda la adición de diodos conectados en paralelo a los terminales de los motores como protección.
 
 ---
 
@@ -78,7 +70,7 @@ Ambos pulsadores están configurados como `INPUT_PULLUP` en el firmware, por lo 
 |---|---|
 | Batería 9V | Entrada del regulador 7805 |
 | Salida del regulador (5V) | VIN del ESP32 y pin positivo de ambos motores |
-| GND de la batería | GND del ESP32 y emisor de ambos transistores |
+| GND de la batería | GND del ESP32 |
 
 > Todos los GND deben estar conectados entre sí en una línea común.
 
@@ -93,8 +85,8 @@ Ambos pulsadores están configurados como `INPUT_PULLUP` en el firmware, por lo 
 | 27 | ADXL345 lumbar | SDA bus I2C |
 | 16 | ADXL345 lumbar | SCL bus I2C |
 | 32 | Buzzer | Señal de control |
-| 33 | Motor torácico | Señal de control (via BC547) |
-| 26 | Motor lumbar | Señal de control (via BC547) |
+| 33 | Motor torácico | Señal de control |
+| 26 | Motor lumbar | Señal de control |
 | 4 | Pulsador calibración | INPUT_PULLUP |
 | 13 | Pulsador resumen | INPUT_PULLUP |
 | VIN | Regulador 7805 | Alimentación 5V |
