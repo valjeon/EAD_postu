@@ -63,10 +63,6 @@ postu/
 │       ├── timer.h/.cpp       # Detección de mala postura y timer
 │       ├── alertas.h/.cpp     # Buzzer, LED y motores hápticos
 │       └── telegram.h/.cpp    # Conexión WiFi y bot de Telegram
-├── docs/
-│   ├── diagrama_atan2.png
-│   ├── diagrama_flujo_1_principal.png
-│   └── diagrama_flujo_2_alertas.png
 └── hardware/
     └── conexiones.md
 ```
