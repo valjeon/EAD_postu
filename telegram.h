@@ -5,10 +5,10 @@
 #include <WiFiClientSecure.h>
 #include <UniversalTelegramBot.h>
 
-#define WIFI_SSID     "valen"
-#define WIFI_PASSWORD "somisomi"
-#define BOT_TOKEN     "8879900282:AAHFds_jG-bmP921XIs8T5O00Xst3EJNQPc"
-#define CHAT_ID       "8651092577"
+#define WIFI_SSID     "WIFI"
+#define WIFI_PASSWORD "PASSWORD"
+#define BOT_TOKEN     "TOKEN"
+#define CHAT_ID       "CHAT_ID"
 // el token del bot y el chat_id se deben configurar para el telegram del usuario
 
 void iniciarTelegram();
